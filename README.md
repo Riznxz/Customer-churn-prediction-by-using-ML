@@ -49,33 +49,32 @@ Data is split into:
 
 ```python
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
-5️⃣ Handle Class Imbalance with SMOTE
-The dataset was imbalanced, so SMOTE was used to add synthetic examples of minority class (churned customers).
+```
+### 5️⃣ Handle Class Imbalance with SMOTE
+The dataset was imbalanced, meaning fewer customers had churned compared to those who hadn’t.  
+To fix this, we used **SMOTE** (Synthetic Minority Over-sampling Technique) to create synthetic samples of the **minority class**.
 
-python
-Copy
-Edit
-X_train_smote, y_train_smote = SMOTE().fit_resample(X_train, y_train)
-6️⃣ Train Models
-Three models were trained and evaluated:
 
-Decision Tree
+### 6️⃣ Train Models
 
-Random Forest
+We trained and evaluated three machine learning models:
 
-XGBoost
+🌳 Decision Tree
 
-python
+🌲 Random Forest
 
+⚡ XGBoost
+```
 model.fit(X_train_smote, y_train_smote)
-7️⃣ Model Evaluation
+```
+### 7️⃣ Model Evaluation
 Used metrics like:
 
 ✅ Accuracy
 
 ### 📉 Confusion Matrix
 
-![Confusion Matrix](images/confusion_matrix.png)
+![Confusion Matrix](confusion_matrix.png)
 
 ---
 
@@ -84,29 +83,22 @@ Used metrics like:
 | Model           | Accuracy |
 |----------------|----------|
 | Decision Tree  | 82%      |
-| Random Forest  | 89% ✅   |
+| Random Forest  | 84% ✅   |
 | XGBoost        | 91% 🔥   |
 
----
 
-
-
-accuracy_score(y_test, model.predict(X_test))
-8️⃣ Save the Best Model
+### 8️⃣ Save the Best Model
 The trained Random Forest model was saved using pickle.
 
 with open("customer_churn_model.pkl", "wb") as f:
     pickle.dump(model, f)
-9️⃣ Predict New Data
+    
+### 9️⃣ Predict New Data
 Load the model anytime and predict churn for new customer input.
+![prediction](prediction_output.png)
 
-📈 Accuracy Achieved
-Model	Accuracy (Cross-Validated)
-Decision Tree	⭐ ~XX% (fill in yours)
-Random Forest	⭐⭐ ~XX%
-XGBoost	⭐⭐⭐ ~XX%
 
-🔮 Real-World Impact
+### 🔮 Real-World Impact
 Using this model, companies can:
 
 🚫 Reduce customer loss
@@ -122,9 +114,9 @@ Using this model, companies can:
 ├── 📊 dataset.csv
 ├── 📓 notebook.ipynb
 ├── 🧠 customer_churn_model.pkl
+
 🙌 Let's Connect!
 Feel free to ⭐ this repo if you found it helpful!
 For feedback or collaboration:
-📧 yourname@example.com
-🔗 LinkedIn
+📧 riznxz@example.com
 
